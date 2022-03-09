@@ -7,7 +7,7 @@
     <string name="consulter">Consulter</string>
     <string name="exploitant_d_j_existant">Exploitant déjà existant</string>
     <string name="exploitant_non_existant">Exploitant non éxistant</string>
-    <string name="ajouter_exploitation">Ajouter Exploitation</string>
+    <string name="ajouter_exploitation">Ajouter exploitation</string>
     <string name="nom">Nom</string>
     <string name="prenom">Prénom</string>
     <string name="adresse">Adresse</string>
@@ -15,4 +15,10 @@
     <string name="code_postal">code postal</string>
     <string name="téléphone">Téléphone</string>
     <string name="email">Email</string>
+    <string name="suivant">Suivant</string>
+    <string name="ajouter_exploitant">Ajouter exploitant</string>
+    <string name="ajouter_cahier_culture">Ajouter cahier culture</string>
+    <string name="s_lectionner_exploitant_existant">Sélectionner exploitant existant</string>
+    <string name="pas_dans_la_liste">Pas dans la liste ?</string>
+    <string name="cr_er_un_exploitant">Créer un exploitant</string>
 </resources>
