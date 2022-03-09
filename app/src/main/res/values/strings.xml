@@ -6,6 +6,13 @@
     <string name="ajouter">Ajouter</string>
     <string name="consulter">Consulter</string>
     <string name="exploitant_d_j_existant">Exploitant déjà existant</string>
-    <string name="exploitant_non_existant">Exploitant non existant</string>
+    <string name="exploitant_non_existant">Exploitant non éxistant</string>
     <string name="ajouter_exploitation">Ajouter Exploitation</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prénom</string>
+    <string name="adresse">Adresse</string>
+    <string name="ville">Ville</string>
+    <string name="code_postal">code postal</string>
+    <string name="téléphone">Téléphone</string>
+    <string name="email">Email</string>
 </resources>
