@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.2985" />
+        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2985" />
+        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/drawable/ic_eye_black_24dp.xml" value="0.2985" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2985" />
+        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1935" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/activity_main.xml" value="0.35778985507246375" />
+        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_ajouter.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_dashboard.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_home.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_notifications.xml" value="0.35778985507246375" />
+        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_transferer.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3635" />
       </map>
     </option>
   </component>

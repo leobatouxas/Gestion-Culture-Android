@@ -1,4 +1,4 @@
-package fr.leobatouxas.gestionculture.ui.dashboard;
+package fr.leobatouxas.gestionculture.ui.transferer;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import fr.leobatouxas.gestionculture.databinding.FragmentDashboardBinding;
+import fr.leobatouxas.gestionculture.databinding.FragmentTransfererBinding;
 
-public class DashboardFragment extends Fragment {
+public class TransfererFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+    private FragmentTransfererBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentTransfererBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        final TextView textView = binding.textView;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_ajouter" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="fr.leobatouxas.gestionculture.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_consulter"
+        android:name="fr.leobatouxas.gestionculture.ui.consulter.ConsulterFragment"
+        android:label="Consulter"
+        tools:layout="@layout/fragment_consulter" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="fr.leobatouxas.gestionculture.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_transferer"
+        android:name="fr.leobatouxas.gestionculture.ui.transferer.TransfererFragment"
+        android:label="Transférer"
+        tools:layout="@layout/fragment_transferer" />
 </navigation>
