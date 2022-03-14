@@ -24,8 +24,8 @@ public class AjouterFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_ajouter, container, false);
 
-
-        Button btn = rootView.findViewById(R.id.btnAccueilSuivant);
+        //Suivant -> Créer Exploitant
+        Button btn = rootView.findViewById(R.id.btnCreerExploitant);
         btn.setOnClickListener(btnAjouterExploitant);
 
         return rootView;
