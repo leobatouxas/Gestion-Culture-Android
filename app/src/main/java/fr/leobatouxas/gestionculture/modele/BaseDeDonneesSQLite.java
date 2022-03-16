@@ -18,8 +18,7 @@ public class BaseDeDonneesSQLite extends SQLiteOpenHelper {
 
     private static final String CREATE_ESPECE = "CREATE TABLE espece ("
             + "codeEspece TEXT PRIMARY KEY, "
-            + "libelle TEXT NOT NULL,"
-            + "rendementPrevus REAL NOT NULL);";
+            + "libelle TEXT NOT NULL);";
 
     private static final String CREATE_EXPLOITATION = "CREATE TABLE exploitation ("
             + "codeExploitation TEXT PRIMARY KEY, "
@@ -38,7 +37,8 @@ public class BaseDeDonneesSQLite extends SQLiteOpenHelper {
     private static final String CREATE_PARCELLE = "CREATE TABLE parcelle ("
             + "idParcelle INTEGER PRIMARY KEY AUTOINCREMENT, "
             + "surface REAL NOT NULL,"
-            + "rendementPrevus REAL NOT NULL,"
+            + "rendementPrevu REAL NOT NULL,"
+            + "rendementRealise REAL NOT NULL,"
             + "codeEspece TEXT NOT NULL,"
             + "idCahierCulture TEXT NOT NULL,"
             + "FOREIGN KEY (codeEspece) REFERENCES espece(codeEspece),"

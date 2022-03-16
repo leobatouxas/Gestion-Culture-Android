@@ -1,5 +1,6 @@
 package fr.leobatouxas.gestionculture;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import fr.leobatouxas.gestionculture.databinding.ActivityMainBinding;
+import fr.leobatouxas.gestionculture.modele.BaseDeDonneesSQLite;
+import fr.leobatouxas.gestionculture.modele.Exploitation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        int VERSION_BDD = 3;
+        BaseDeDonneesSQLite baseDeDonneesSQLite = new BaseDeDonneesSQLite(getBaseContext( ), "gestionculture.db", null,
+                VERSION_BDD);
+        Global.bddsqlLite= baseDeDonneesSQLite.getWritableDatabase();
+
+
     }
 
 }

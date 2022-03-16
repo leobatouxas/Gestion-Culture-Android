@@ -14,6 +14,7 @@ import fr.leobatouxas.gestionculture.AjoutExploitant;
 import fr.leobatouxas.gestionculture.MainActivity;
 import fr.leobatouxas.gestionculture.R;
 import fr.leobatouxas.gestionculture.databinding.FragmentAjouterBinding;
+import fr.leobatouxas.gestionculture.modele.Exploitation;
 
 
 public class AjouterFragment extends Fragment {
@@ -26,19 +27,17 @@ public class AjouterFragment extends Fragment {
 
         //Suivant -> Créer Exploitant
         Button btn = rootView.findViewById(R.id.btnCreerExploitant);
-        btn.setOnClickListener(btnAjouterExploitant);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AjoutExploitant.class);
+                ((MainActivity) getActivity()).startActivity(intent);
+            }
+        });
 
         return rootView;
 
     }
-
-    private final View.OnClickListener btnAjouterExploitant = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), AjoutExploitant.class);
-             ((MainActivity) getActivity()).startActivity(intent);
-        }
-    };
 
     @Override
     public void onDestroyView() {

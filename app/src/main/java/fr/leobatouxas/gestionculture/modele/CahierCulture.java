@@ -4,26 +4,19 @@ import java.util.ArrayList;
 
 public class CahierCulture {
 
-    private Integer idCahierCulture;
+    private String codeCahierCulture;
     private String annee;
     private ArrayList<Parcelle> parcelles;
 
     public CahierCulture() {
     }
 
-    public CahierCulture(Integer idCahierCulture, String annee, ArrayList<Parcelle> parcelles) {
-        this.idCahierCulture = idCahierCulture;
+    public CahierCulture(String codeCahierCulture, String annee, ArrayList<Parcelle> parcelles) {
+        this.codeCahierCulture = codeCahierCulture;
         this.annee = annee;
         this.parcelles = parcelles;
     }
 
-    public Integer getIdCahierCulture() {
-        return idCahierCulture;
-    }
-
-    public void setIdCahierCulture(Integer idCahierCulture) {
-        this.idCahierCulture = idCahierCulture;
-    }
 
     public String getAnnee() {
         return annee;
@@ -39,5 +32,13 @@ public class CahierCulture {
 
     public void setParcelles(ArrayList<Parcelle> parcelles) {
         this.parcelles = parcelles;
+    }
+
+    public String getCodeCahierCulture() {
+        return codeCahierCulture;
+    }
+
+    public void setCodeCahierCulture(String codeCahierCulture) {
+        this.codeCahierCulture = codeCahierCulture;
     }
 }
