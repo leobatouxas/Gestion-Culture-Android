@@ -16,14 +16,13 @@ import org.w3c.dom.Entity;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 
 public class AccesHTTP  extends AsyncTask<String, Integer, Long> {
 
     private ArrayList<NameValuePair> parametres;
     private String ret = null;
-    private AsyncResponse delegate =  null;
+    public AsyncResponse delegate =  null;
 
     /**
      * Constructeur
@@ -72,7 +71,7 @@ public class AccesHTTP  extends AsyncTask<String, Integer, Long> {
 
     @Override
     protected void onPostExecute(Long result){
-        delegate.processFinish((ret.toString()));
+        delegate.processFinish((ret));
     }
 
 }

@@ -3,6 +3,7 @@ package fr.leobatouxas.gestionculture;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +15,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import org.json.JSONArray;
+
 import fr.leobatouxas.gestionculture.databinding.ActivityMainBinding;
+import fr.leobatouxas.gestionculture.modele.AccesDistant;
 import fr.leobatouxas.gestionculture.modele.BaseDeDonneesSQLite;
 import fr.leobatouxas.gestionculture.modele.Exploitation;
 
@@ -25,7 +29,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        int VERSION_BDD = 3;
+        BaseDeDonneesSQLite baseDeDonneesSQLite = new BaseDeDonneesSQLite(getBaseContext( ), "gestionculture.db", null,
+                VERSION_BDD);
+        Global.bddsqlLite= baseDeDonneesSQLite.getWritableDatabase();
+        Global.accesDistant = new AccesDistant();
+        Global.accesDistant.recup("AllExploitant");
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -39,10 +48,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        int VERSION_BDD = 3;
-        BaseDeDonneesSQLite baseDeDonneesSQLite = new BaseDeDonneesSQLite(getBaseContext( ), "gestionculture.db", null,
-                VERSION_BDD);
-        Global.bddsqlLite= baseDeDonneesSQLite.getWritableDatabase();
+
+
+
 
 
     }
