@@ -15,4 +15,5 @@ public class Global {
     public static Exploitant lastExploitant;
     public static Exploitation lastExploitationByExploitant;
     public static ArrayList<Exploitant> lesExploitants = new ArrayList<Exploitant>();
+    public static ArrayList<Exploitation> lesExploitationsByExploitant = new ArrayList<Exploitation>();
  }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.GestionCulture"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ChoixExploitation"
+            android:exported="false" />
+        <activity
             android:name=".AjoutExploitation"
             android:exported="false" />
 
