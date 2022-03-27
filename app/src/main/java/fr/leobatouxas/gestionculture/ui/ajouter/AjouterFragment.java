@@ -2,6 +2,7 @@ package fr.leobatouxas.gestionculture.ui.ajouter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,12 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.leobatouxas.gestionculture.AjoutExploitant;
-import fr.leobatouxas.gestionculture.AjoutExploitation;
 import fr.leobatouxas.gestionculture.ChoixExploitation;
 import fr.leobatouxas.gestionculture.Global;
 import fr.leobatouxas.gestionculture.MainActivity;
@@ -37,6 +40,7 @@ public class AjouterFragment extends Fragment {
         btnactu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("exploitant", Global.lesExploitants.toString());
                 ArrayList<String> arraySpinner = new ArrayList<String>();
                 for(int i=0;i<Global.lesExploitants.toArray().length;i++){
                     arraySpinner.add(Global.lesExploitants.get(i).getCodeExploitant() + "-" + Global.lesExploitants.get(i).getNom() + "-" + Global.lesExploitants.get(i).getPrenom());
@@ -56,13 +60,19 @@ public class AjouterFragment extends Fragment {
                 ((MainActivity) getActivity()).startActivity(intent);
                 intent.putExtra("Exploitant",s.getItemAtPosition(s.getSelectedItemPosition()).toString());
                 startActivity(intent);
+
+                String Exploitant = s.getItemAtPosition(s.getSelectedItemPosition()).toString();
+                String[] codeExploitant = Exploitant.split("-");
+                List list = new ArrayList();
+                list.add(codeExploitant[0]);
+                Global.accesDistant.envoi("ExploitationsByExploitant",new JSONArray(list));
             }
         });
 
 
 
         // BTN Créer Exploitant -> Ajout Exploitant
-        Button btnCreeExploitant = rootView.findViewById(R.id.btnCreerExploitaationChoixExploitation);
+        Button btnCreeExploitant = rootView.findViewById(R.id.btnCreerExploitationChoixExploitation);
         btnCreeExploitant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

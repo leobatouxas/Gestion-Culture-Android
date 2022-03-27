@@ -14,7 +14,7 @@ import fr.leobatouxas.gestionculture.outils.AsyncResponse;
 
 public class AccesDistant implements AsyncResponse {
 
-    private static final String SERVERADDR = "http://192.168.1.20/api/insert.php";
+    private static final String SERVERADDR = "http://0.0.0.0/api/insert.php";
 
     public AccesDistant() {
         super();
@@ -102,24 +102,33 @@ public class AccesDistant implements AsyncResponse {
                         }else {
                             if(message[0].equals("ExploitationsByExploitant")){
                                 try{
-                                    JSONArray JSONInfo = new JSONArray(message[1]);
-                                    Global.lesExploitationsByExploitant.clear();
-                                    for(int i=0;i<JSONInfo.length();i++){
-                                        JSONObject info = new JSONObject(JSONInfo.get(i).toString());
-                                        String codeExploitation = info.getString("codeExploitation");
-                                        String codeExploitant = info.getString("codeExploitant");
-                                        String adresse = info.getString("adresse");
-                                        String ville = info.getString("ville");
-                                        String codePostal = info.getString("codePostal");
-                                        Exploitant Exploitant = new Exploitant();
-                                        Exploitation Exploitation = new Exploitation(codeExploitation, adresse, ville, codePostal, Exploitant);
-                                        Log.d("exploitantall",message[1]);
-                                        Global.lesExploitationsByExploitant.add(Exploitation);
+                                    if(!message[1].equals("null")){
+                                        JSONArray JSONInfo = new JSONArray(message[1]);
+                                        Global.lesExploitationsByExploitant.clear();
+                                        for(int i=0;i<JSONInfo.length();i++){
+                                            JSONObject info = new JSONObject(JSONInfo.get(i).toString());
+                                            String codeExploitation = info.getString("codeExploitation");
+                                            String codeExploitant = info.getString("codeExploitant");
+                                            String adresse = info.getString("adresse");
+                                            String ville = info.getString("ville");
+                                            String codePostal = info.getString("codePostal");
+                                            Exploitant Exploitant = new Exploitant();
+                                            Exploitation Exploitation = new Exploitation(codeExploitation, adresse, ville, codePostal, Exploitant);
+                                            Log.d("exploitantall",message[1]);
+                                            Global.lesExploitationsByExploitant.add(Exploitation);
+                                        }
                                     }
+                                    else{
+                                        Global.lesExploitationsByExploitant.clear();
+                                    }
+
                                 } catch(JSONException e){
                                     Log.d("erreur", "Conversion JSON impossible *******" + e.toString());
                                 }
                             }else {
+                                if (message[0].equals("enregExploitant")) {
+                                    Log.d("enregExploitant", "*******" + message[1]);
+                                }
                                 if (message[0].equals("Erreur : ")) {
                                     Log.d("Erreur :", "*******" + message[1]);
                                 }

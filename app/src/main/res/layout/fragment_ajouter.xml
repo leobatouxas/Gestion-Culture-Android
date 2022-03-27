@@ -66,7 +66,7 @@
             android:text="@string/pas_dans_la_liste" />
 
         <Button
-            android:id="@+id/btnCreerExploitaationChoixExploitation"
+            android:id="@+id/btnCreerExploitationChoixExploitation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cr_er_un_exploitant" />
