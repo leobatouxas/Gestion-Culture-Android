@@ -13,19 +13,13 @@
         android:theme="@style/Theme.GestionCulture"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ChoixExploitation"
-            android:exported="false" />
-        <activity
-            android:name=".AjoutExploitation"
+            android:name=".ui.ajouter.AjoutParcelle"
             android:exported="false" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity
-            android:name=".AjoutExploitant"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
