@@ -25,6 +25,12 @@ public class CahierCulture {
         this.parcelles = parcelles;
     }
 
+    public CahierCulture(int idCahierCulture, Exploitation exploitation, String annee) {
+        this.idCahierCulture = idCahierCulture;
+        this.exploitation = exploitation;
+        this.annee = annee;
+    }
+
     public void createSQLite(){
         ContentValues values = new ContentValues();
         values.put("codeExploitation", this.exploitation.getCodeExploitation());

@@ -1,5 +1,6 @@
 package fr.leobatouxas.gestionculture.modele;
 
+import android.database.Cursor;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -7,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.leobatouxas.gestionculture.Global;
 import fr.leobatouxas.gestionculture.outils.AccesHTTP;
@@ -51,8 +53,8 @@ public class AccesDistant implements AsyncResponse {
                         String telephone = info.getString("telephone");
                         String email = info.getString("email");
 
-                        Exploitant lastExploitant = new Exploitant(codeExploitant, nom, prenom, adresse, ville, codePostal, telephone, email);
-                        Global.lastExploitant = lastExploitant;
+                        //Exploitant lastExploitant = new Exploitant(codeExploitant, nom, prenom, adresse, ville, codePostal, telephone, email);
+                        //Global.lastExploitant = lastExploitant;
                         }else {
                             Global.lastExploitant = null;
                         }
@@ -69,8 +71,8 @@ public class AccesDistant implements AsyncResponse {
                             String ville = info.getString("ville");
                             String codePostal = info.getString("codePostal");
                             Exploitant exploitant = new Exploitant();
-                            Exploitation lastExploitation = new Exploitation(codeExploitation, adresse, ville, codePostal, exploitant);
-                            Global.lastExploitationByExploitant = lastExploitation;
+                            //Exploitation lastExploitation = new Exploitation(codeExploitation, adresse, ville, codePostal, exploitant);
+                            //Global.lastExploitationByExploitant = lastExploitation;
                         } catch (JSONException e) {
                             Log.d("erreur", "Conversion JSON impossible *******" + e.toString());
                         }
@@ -90,8 +92,8 @@ public class AccesDistant implements AsyncResponse {
                                         String codePostal = info.getString("codePostal");
                                         String telephone = info.getString("telephone");
                                         String email = info.getString("email");
-                                        Exploitant Exploitant = new Exploitant(codeExploitant, nom, prenom, adresse, ville, codePostal, telephone, email);
-                                        Global.lesExploitants.add(Exploitant);
+                                        //Exploitant Exploitant = new Exploitant(codeExploitant, nom, prenom, adresse, ville, codePostal, telephone, email);
+                                        //Global.lesExploitants.add(Exploitant);
                                     }
                                 }else {
                                     Global.lesExploitants.clear();
@@ -158,5 +160,26 @@ public class AccesDistant implements AsyncResponse {
         accesDonnes.addParams("operation", operation);
         //appel au serveur
         accesDonnes.execute(SERVERADDR);
+    }
+    public void transfertcahierCulture(){
+        List list = new ArrayList();
+        Cursor c = Global.bddsqlLite.rawQuery("SELECT idCahierCulture,annee,codeExploitation FROM cahierCulture;", null);
+        while (c.moveToNext())
+        {
+            JSONObject jsonObject=null;
+            try {
+                jsonObject=new JSONObject();
+                jsonObject.put("idCahierCulture",c.getInt(0));
+                jsonObject.put("annee",c.getString(1));
+                jsonObject.put("codeExploitation",c.getString(2));
+                String jsonStr=jsonObject.toString();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            list.add(jsonObject);
+
+
+        }
+        Log.d("cahierculture", new JSONArray(list).toString());
     }
 }
