@@ -55,6 +55,7 @@ public class BaseDeDonneesSQLite extends SQLiteOpenHelper {
         db.execSQL(CREATE_EXPLOITATION);
         db.execSQL(CREATE_CAHIERCULTURE);
         db.execSQL(CREATE_PARCELLE);
+        db.execSQL("INSERT INTO espece (codeEspece, libelle) VALUES ('BLE', 'Blé'),('ORGE', 'Orge'),('BETTE', 'Betteraves');");
     }
 
     @Override

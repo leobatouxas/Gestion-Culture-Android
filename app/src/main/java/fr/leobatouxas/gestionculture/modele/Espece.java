@@ -1,6 +1,10 @@
 package fr.leobatouxas.gestionculture.modele;
 
+import android.database.Cursor;
+
 import java.util.ArrayList;
+
+import fr.leobatouxas.gestionculture.Global;
 
 public class Espece {
 
@@ -15,6 +19,15 @@ public class Espece {
         this.codeEspece = codeEspece;
         this.libelle = libelle;
         this.parcelles = parcelles;
+    }
+    public void findByLibelle(String libelle){
+        Cursor c = Global.bddsqlLite.rawQuery("SELECT codeEspece FROM espece where libelle = '" + libelle + "';", null);
+        this.libelle = libelle;
+        while (c.moveToNext( ))
+        {
+            this.codeEspece = c.getString(0);
+        }
+
     }
 
 

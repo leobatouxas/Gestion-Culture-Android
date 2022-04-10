@@ -21,4 +21,12 @@
     <string name="s_lectionner_exploitant_existant">Sélectionner exploitant existant</string>
     <string name="pas_dans_la_liste">Pas dans la liste ?</string>
     <string name="cr_er_un_exploitant">Créer un exploitant</string>
+    <string name="cahier_culture">Cahier Culture</string>
+    <string name="codeexploitation">codeExploitation</string>
+    <string name="annee">Année</string>
+    <string name="parcelle">Parcelle</string>
+    <string name="espece">Espèce</string>
+    <string name="surface">Surface</string>
+    <string name="rendementprevu">Rendement Prévu</string>
+    <string name="rendementrealise">Rendement Réalisé</string>
 </resources>

@@ -1,26 +1,25 @@
 package fr.leobatouxas.gestionculture.ui.ajouter;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
-
-import fr.leobatouxas.gestionculture.AjoutExploitant;
-import fr.leobatouxas.gestionculture.AjoutExploitation;
-import fr.leobatouxas.gestionculture.ChoixExploitation;
 import fr.leobatouxas.gestionculture.Global;
 import fr.leobatouxas.gestionculture.MainActivity;
 import fr.leobatouxas.gestionculture.R;
 import fr.leobatouxas.gestionculture.databinding.FragmentAjouterBinding;
+import fr.leobatouxas.gestionculture.modele.CahierCulture;
+import fr.leobatouxas.gestionculture.modele.Exploitation;
 
 
 public class AjouterFragment extends Fragment {
@@ -30,45 +29,35 @@ public class AjouterFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_ajouter, container, false);
-        Spinner s = (Spinner) rootView.findViewById(R.id.spinnerExploitation);
 
-        // BTN Actualiser
-        Button btnactu = rootView.findViewById(R.id.btnActuChoixExploitation);
-        btnactu.setOnClickListener(new View.OnClickListener() {
+        // BTN Ajouter parcelle -> Ajout Parcelle
+        Button btnAjouterParcelle = rootView.findViewById(R.id.btnAjouterParcelle);
+        btnAjouterParcelle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<String> arraySpinner = new ArrayList<String>();
-                for(int i=0;i<Global.lesExploitants.toArray().length;i++){
-                    arraySpinner.add(Global.lesExploitants.get(i).getCodeExploitant() + "-" + Global.lesExploitants.get(i).getNom() + "-" + Global.lesExploitants.get(i).getPrenom());
+                EditText editTextcodeExploitation = rootView.findViewById(R.id.editTextcodeExploitation);
+                EditText editTextAnnee = rootView.findViewById(R.id.editTextAnnee);
+
+                if(!editTextcodeExploitation.getText().toString().isEmpty() & editTextAnnee.getText().toString().length() >= 4) {
+                    String codeExploitationtxt = editTextcodeExploitation.getText().toString();
+                    String anneetxt = editTextAnnee.getText().toString();
+
+                    CahierCulture cahierCulture = new CahierCulture();
+                    cahierCulture.setExploitation(new Exploitation(codeExploitationtxt));
+                    cahierCulture.setAnnee(anneetxt);
+
+                    //Vérification existence cahier culture
+                    //Création du cahier culture s'il n'existe pas en BDD
+                    if(cahierCulture.existSQLite() == false) {
+                        cahierCulture.createSQLite();
+                    }
+
+                    //Passage à l'activité pour créer une parcelle
+                    Intent intent = new Intent(getActivity(), AjoutParcelle.class);
+                    intent.putExtra("codeExploitation", codeExploitationtxt);
+                    intent.putExtra("annee", anneetxt);
+                    ((MainActivity) getActivity()).startActivity(intent);
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,arraySpinner);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                s.setAdapter(adapter);
-            }
-        });
-
-        //BTN suivant -> Choix exploitation
-        Button btnSuivant = rootView.findViewById(R.id.btnSuivantChoixExploitation);
-        btnSuivant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ChoixExploitation.class);
-                ((MainActivity) getActivity()).startActivity(intent);
-                intent.putExtra("Exploitant",s.getItemAtPosition(s.getSelectedItemPosition()).toString());
-                startActivity(intent);
-            }
-        });
-
-
-
-        // BTN Créer Exploitant -> Ajout Exploitant
-        Button btnCreeExploitant = rootView.findViewById(R.id.btnCreerExploitaationChoixExploitation);
-        btnCreeExploitant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AjoutExploitant.class);
-                ((MainActivity) getActivity()).startActivity(intent);
-                Global.accesDistant.recup("lastExploitant");
             }
         });
 

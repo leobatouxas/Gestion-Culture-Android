@@ -29,12 +29,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int VERSION_BDD = 3;
-        BaseDeDonneesSQLite baseDeDonneesSQLite = new BaseDeDonneesSQLite(getBaseContext( ), "gestionculture.db", null,
+        //Création base de données SQL Lite
+        int VERSION_BDD = 4;
+        BaseDeDonneesSQLite baseDeDonneesSQLite = new BaseDeDonneesSQLite(getBaseContext(), "gestionculture.db", null,
                 VERSION_BDD);
         Global.bddsqlLite= baseDeDonneesSQLite.getWritableDatabase();
-        Global.accesDistant = new AccesDistant();
-        Global.accesDistant.recup("AllExploitant");
+
+        //Création instance base de données distante
+        //Global.accesDistant = new AccesDistant();
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

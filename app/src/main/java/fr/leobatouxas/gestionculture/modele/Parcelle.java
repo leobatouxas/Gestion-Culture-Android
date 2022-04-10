@@ -1,10 +1,14 @@
 package fr.leobatouxas.gestionculture.modele;
 
+import android.content.ContentValues;
+
 import java.util.ArrayList;
+
+import fr.leobatouxas.gestionculture.Global;
 
 public class Parcelle {
 
-    private String codeParcelle;
+    private String idParcelle;
     private Double surface;
     private Double rendementRealise;
     private Double rendementPrevu;
@@ -15,12 +19,38 @@ public class Parcelle {
     }
 
     public Parcelle(String codeParcelle, Double surface, Double rendementRealise, Double rendementPrevu, CahierCulture cahierCulture, Espece espece) {
-        this.codeParcelle = codeParcelle;
+        this.idParcelle = codeParcelle;
         this.surface = surface;
         this.rendementRealise = rendementRealise;
         this.rendementPrevu = rendementPrevu;
         this.cahierCulture = cahierCulture;
         this.espece = espece;
+    }
+
+    public Parcelle(Double surface, Double rendementRealise, Double rendementPrevu, CahierCulture cahierCulture, Espece espece) {
+        this.surface = surface;
+        this.rendementRealise = rendementRealise;
+        this.rendementPrevu = rendementPrevu;
+        this.cahierCulture = cahierCulture;
+        this.espece = espece;
+    }
+
+    public void createSQLite(){
+        ContentValues values = new ContentValues();
+        values.put("surface", surface);
+        values.put("rendementPrevu", rendementPrevu);
+        values.put("rendementRealise", rendementRealise);
+        values.put("codeEspece", this.espece.getCodeEspece());
+        values.put("idCahierCulture", cahierCulture.getIdCahierCulture());
+        Global.bddsqlLite.insert("parcelle", null, values);
+    }
+
+    public String getIdParcelle() {
+        return idParcelle;
+    }
+
+    public void setIdParcelle(String idParcelle) {
+        this.idParcelle = idParcelle;
     }
 
     public Double getSurface() {
@@ -29,30 +59,6 @@ public class Parcelle {
 
     public void setSurface(Double surface) {
         this.surface = surface;
-    }
-
-    public Double getrendementRealise() {
-        return rendementRealise;
-    }
-
-    public void setrendementRealise(Double rendementRealise) {
-        this.rendementRealise = rendementRealise;
-    }
-
-    public CahierCulture getCahierCulture() {
-        return cahierCulture;
-    }
-
-    public void setCahierCulture(CahierCulture cahierCulture) {
-        this.cahierCulture = cahierCulture;
-    }
-
-    public Espece getEspece() {
-        return espece;
-    }
-
-    public void setEspece(Espece espece) {
-        this.espece = espece;
     }
 
     public Double getRendementRealise() {
@@ -71,11 +77,19 @@ public class Parcelle {
         this.rendementPrevu = rendementPrevu;
     }
 
-    public String getCodeParcelle() {
-        return codeParcelle;
+    public CahierCulture getCahierCulture() {
+        return cahierCulture;
     }
 
-    public void setCodeParcelle(String codeParcelle) {
-        this.codeParcelle = codeParcelle;
+    public void setCahierCulture(CahierCulture cahierCulture) {
+        this.cahierCulture = cahierCulture;
+    }
+
+    public Espece getEspece() {
+        return espece;
+    }
+
+    public void setEspece(Espece espece) {
+        this.espece = espece;
     }
 }

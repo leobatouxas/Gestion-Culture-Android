@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="362dp"
-        android:layout_height="322dp"
+        android:layout_width="363dp"
+        android:layout_height="287dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="-150dp"
         android:layout_marginEnd="8dp"
@@ -21,55 +21,52 @@
         app:layout_constraintVertical_bias="0.501">
 
         <TextView
-            android:id="@+id/titleChoixExploitation"
+            android:id="@+id/titleAjoutParcelle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="39dp"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/s_lectionner_exploitant_existant"
+            android:text="@string/cahier_culture"
             android:textAlignment="center"
             android:textSize="24sp" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="@string/codeexploitation" />
 
-            <Button
-                android:id="@+id/btnActuChoixExploitation"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Actualiser" />
-
-            <Spinner
-                android:id="@+id/spinnerExploitation"
-                android:layout_width="220dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textAlignment="center"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnSuivantChoixExploitation"
+        <EditText
+            android:id="@+id/editTextcodeExploitation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/suivant" />
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/pas_dans_la_liste" />
+            android:text="@string/annee" />
+
+        <EditText
+            android:id="@+id/editTextAnnee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
-            android:id="@+id/btnCreerExploitaationChoixExploitation"
+            android:id="@+id/btnAjouterParcelle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cr_er_un_exploitant" />
+            android:text="Ajouter Parcelle" />
 
     </LinearLayout>
 
