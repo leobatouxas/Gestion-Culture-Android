@@ -14,6 +14,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.util.Calendar;
+
 import fr.leobatouxas.gestionculture.Global;
 import fr.leobatouxas.gestionculture.MainActivity;
 import fr.leobatouxas.gestionculture.R;
@@ -36,26 +38,50 @@ public class AjouterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 EditText editTextcodeExploitation = rootView.findViewById(R.id.editTextcodeExploitation);
-                EditText editTextAnnee = rootView.findViewById(R.id.editTextAnnee);
 
-                if(!editTextcodeExploitation.getText().toString().isEmpty() & editTextAnnee.getText().toString().length() >= 4) {
+
+
+
+
+                if(!editTextcodeExploitation.getText().toString().isEmpty()) {
                     String codeExploitationtxt = editTextcodeExploitation.getText().toString();
-                    String anneetxt = editTextAnnee.getText().toString();
 
+                    Exploitation exploitation = new Exploitation(codeExploitationtxt);
                     CahierCulture cahierCulture = new CahierCulture();
-                    cahierCulture.setExploitation(new Exploitation(codeExploitationtxt));
-                    cahierCulture.setAnnee(anneetxt);
+                    cahierCulture.setExploitation(exploitation);
+                    Calendar date = Calendar.getInstance();
+                    int mois = date.get(Calendar.MONTH);
+                    Integer annee1 = date.get(Calendar.YEAR);
+                    Integer annee2 = date.get(Calendar.YEAR);
+                    if(mois >= 7 && mois <= 12){
+                        annee2 = date.get(Calendar.YEAR);
+                        annee1 = date.get(Calendar.YEAR) + 1;
+                    }
+                    else {
+                        annee1 = date.get(Calendar.YEAR) - 1;
+                        annee2 = date.get(Calendar.YEAR);
+                    }
+                    String annee = annee1 + "-" +annee2;
+                    cahierCulture.setAnnee(annee);
+
+
+
+                    //Vérification existence exploitation
+                    //Création de l'exploitation s'il n'existe pas en BDD
+                    if(exploitation.existSQLite() == false) {
+                        exploitation.createSQLite();
+                    }
 
                     //Vérification existence cahier culture
                     //Création du cahier culture s'il n'existe pas en BDD
                     if(cahierCulture.existSQLite() == false) {
-                        cahierCulture.createSQLite();
+                         cahierCulture.createSQLite();
                     }
 
                     //Passage à l'activité pour créer une parcelle
                     Intent intent = new Intent(getActivity(), AjoutParcelle.class);
                     intent.putExtra("codeExploitation", codeExploitationtxt);
-                    intent.putExtra("annee", anneetxt);
+                    intent.putExtra("annee", annee);
                     ((MainActivity) getActivity()).startActivity(intent);
                 }
             }
