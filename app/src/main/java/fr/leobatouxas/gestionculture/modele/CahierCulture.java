@@ -30,6 +30,11 @@ public class CahierCulture {
         this.exploitation = exploitation;
         this.annee = annee;
     }
+    public CahierCulture(Exploitation exploitation, String annee) {
+        this.idCahierCulture = idCahierCulture;
+        this.exploitation = exploitation;
+        this.annee = annee;
+    }
 
     public void createSQLite(){
         ContentValues values = new ContentValues();
