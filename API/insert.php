@@ -36,7 +36,7 @@ if(isset($_REQUEST["operation"])) {
                     $stmt->execute();
                 }
             }
-            echo "ok";
+            print("enreg%");
         }catch(PDOException $e) {
             print "Erreur :%".$e->getMessage();
             die();
