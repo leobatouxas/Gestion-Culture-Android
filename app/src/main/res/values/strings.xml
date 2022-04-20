@@ -29,4 +29,6 @@
     <string name="surface">Surface</string>
     <string name="rendementprevu">Rendement Prévu</string>
     <string name="rendementrealise">Rendement Réalisé</string>
+    <string name="s_lectionner_cahier_culture">Sélectionner Cahier Culture</string>
+    <string name="s_lectionner_parcelle">Sélectionner Parcelle</string>
 </resources>

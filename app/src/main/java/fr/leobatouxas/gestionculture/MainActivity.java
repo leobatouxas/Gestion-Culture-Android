@@ -14,23 +14,23 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.leobatouxas.gestionculture.databinding.ActivityMainBinding;
 import fr.leobatouxas.gestionculture.modele.AccesDistant;
 import fr.leobatouxas.gestionculture.modele.BaseDeDonneesSQLite;
 import fr.leobatouxas.gestionculture.modele.CahierCulture;
-import fr.leobatouxas.gestionculture.modele.CahierCultureAdapter;
 import fr.leobatouxas.gestionculture.modele.Exploitation;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

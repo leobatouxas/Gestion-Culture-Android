@@ -10,9 +10,7 @@
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1935" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/activity_ajout_exploitant.xml" value="0.3625" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/activity_main.xml" value="0.35778985507246375" />
-        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/cahier_culture_item.xml" value="0.25" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_ajouter.xml" value="0.25" />
-        <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_consulter.xml" value="0.2328125" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_dashboard.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_home.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/leo/AndroidStudioProjects/GestionCulture/app/src/main/res/layout/fragment_notifications.xml" value="0.35778985507246375" />
@@ -23,9 +21,14 @@
         <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/activity_ajout_exploitation.xml" value="0.27395833333333336" />
         <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/activity_ajout_parcelle.xml" value="0.33" />
         <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/activity_choix_exploitation.xml" value="0.25" />
+        <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/activity_list_parcelle.xml" value="0.33967391304347827" />
         <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/activity_main.xml" value="0.16944444444444445" />
+        <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/activity_modif_parcelle.xml" value="0.25" />
+        <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/cahier_culture_item.xml" value="0.33" />
         <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/fragment_ajouter.xml" value="0.33" />
+        <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/fragment_consulter.xml" value="0.33" />
         <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/fragment_transferer.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/leoba/AndroidStudioProjects/Gestion-Culture-Android/app/src/main/res/layout/frame_textview.xml" value="0.33" />
       </map>
     </option>
   </component>

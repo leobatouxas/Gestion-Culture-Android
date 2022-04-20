@@ -1,50 +1,62 @@
 package fr.leobatouxas.gestionculture.ui.consulter;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.ArrayList;
-import java.util.List;
 
+import fr.leobatouxas.gestionculture.Global;
+import fr.leobatouxas.gestionculture.ListParcelle;
+import fr.leobatouxas.gestionculture.MainActivity;
 import fr.leobatouxas.gestionculture.R;
 import fr.leobatouxas.gestionculture.databinding.FragmentConsulterBinding;
-import fr.leobatouxas.gestionculture.modele.CahierCulture;
-import fr.leobatouxas.gestionculture.modele.CahierCultureAdapter;
-import fr.leobatouxas.gestionculture.modele.Exploitation;
 
 public class ConsulterFragment extends Fragment {
 
     private FragmentConsulterBinding binding;
-    private List<CahierCulture> mesCahierCultures;
-    private RecyclerView mRecyclerView;
-    private CahierCultureAdapter cahierCultureAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_consulter, container, false);
+        Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner_consulter_cahierculture);
+        ArrayList<CharSequence> CahierCultures = new ArrayList<CharSequence>();
+        Cursor c = Global.bddsqlLite.rawQuery("select codeExploitation, annee, idCahierCulture from cahierculture", null);
+        while (c.moveToNext())
+        {
+            CahierCultures.add(c.getString(0) + "/" + c.getString(1));
+        }
+        ArrayAdapter<CharSequence> DataAdapter = new ArrayAdapter<CharSequence>(getContext(),
+                android.R.layout.simple_list_item_1, CahierCultures);
+        spinner.setAdapter(DataAdapter);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-        mesCahierCultures = new ArrayList<>();
+        Button btnConsulter = rootView.findViewById(R.id.btn_consulter_cahierculture);
+        btnConsulter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Spinner spinnerCahierCulture = rootView.findViewById(R.id.spinner_consulter_cahierculture);
+                String libelleSpinnerCahierCulture = spinnerCahierCulture.getItemAtPosition(spinnerCahierCulture.getSelectedItemPosition()).toString();
+                String[] splitCahierCulture = libelleSpinnerCahierCulture.split("/");
+                String codeExploitation = splitCahierCulture[0];
+                String annee = splitCahierCulture[1];
 
-        Exploitation exploitation = new Exploitation("e5");
-        mesCahierCultures.add(new CahierCulture(exploitation,"2020"));
-
-        cahierCultureAdapter = new CahierCultureAdapter(mesCahierCultures);
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        mRecyclerView.setAdapter(cahierCultureAdapter);
+                //Passage à l'activité pour modifier, supprimer cahierCulture
+                Intent intent = new Intent(getActivity(), ListParcelle.class);
+                intent.putExtra("codeExploitation", codeExploitation);
+                intent.putExtra("annee", annee);
+                ((MainActivity) getActivity()).startActivity(intent);
+            }
+        });
         return rootView;
     }
 
