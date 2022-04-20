@@ -34,14 +34,14 @@ public class ModifParcelle extends AppCompatActivity {
         ArrayAdapter<CharSequence> DataAdapter = new ArrayAdapter<CharSequence> (this,
                 android.R.layout.simple_list_item_1, Especes);
         spinnerEspeceModif.setAdapter(DataAdapter);
-
+        d.close();
         Cursor c = Global.bddsqlLite.rawQuery("select surface, rendementPrevu, rendementRealise, codeEspece from parcelle WHERE idParcelle = " + idParcelle + ";" , null);
         c.moveToFirst();
         String surface = c.getString(0);
         String rendementPrevu = c.getString(1);
         String rendementRealise = c.getString(2);
         String codeEspece = c.getString(3);
-
+        c.close();
         EditText editTextSurface = findViewById(R.id.editTextSurfaceModif);
         EditText editTextRendementPrevu = findViewById(R.id.editTextRendementPrevuModif);
         EditText editTextRendementRealise = findViewById(R.id.editTextRendementRealiseModif);
@@ -49,7 +49,6 @@ public class ModifParcelle extends AppCompatActivity {
         editTextSurface.setText(surface);
         editTextRendementPrevu.setText(rendementPrevu);
         editTextRendementRealise.setText(rendementRealise);
-        Log.d("codeEspece", codeEspece);
 
         if(codeEspece.equals("BLE")){
             spinnerEspeceModif.setSelection(0);
