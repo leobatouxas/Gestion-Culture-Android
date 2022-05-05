@@ -29,6 +29,13 @@ public class Espece {
         }
 
     }
+    public void retrieve(String codeEspece){
+        Cursor c = Global.bddsqlLite.rawQuery("SELECT codeEspece, libelle from espece WHERE codeEspece = '" + codeEspece + "';" , null);
+        c.moveToFirst();
+        this.codeEspece = codeEspece;
+        this.libelle = c.getString(1);
+        c.close();
+    }
 
 
     public String getCodeEspece() {

@@ -1,6 +1,7 @@
 package fr.leobatouxas.gestionculture.modele;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ import fr.leobatouxas.gestionculture.Global;
 
 public class Parcelle {
 
-    private String idParcelle;
+    private Integer idParcelle;
     private Double surface;
     private Double rendementRealise;
     private Double rendementPrevu;
@@ -18,8 +19,8 @@ public class Parcelle {
     public Parcelle() {
     }
 
-    public Parcelle(String codeParcelle, Double surface, Double rendementRealise, Double rendementPrevu, CahierCulture cahierCulture, Espece espece) {
-        this.idParcelle = codeParcelle;
+    public Parcelle(Integer idParcelle, Double surface, Double rendementRealise, Double rendementPrevu, CahierCulture cahierCulture, Espece espece) {
+        this.idParcelle = idParcelle;
         this.surface = surface;
         this.rendementRealise = rendementRealise;
         this.rendementPrevu = rendementPrevu;
@@ -34,6 +35,15 @@ public class Parcelle {
         this.cahierCulture = cahierCulture;
         this.espece = espece;
     }
+    public void update(String id){
+        ContentValues values = new ContentValues();
+        values.put("surface", surface);
+        values.put("rendementPrevu", rendementPrevu);
+        values.put("rendementRealise", rendementRealise);
+        values.put("codeEspece", this.espece.getCodeEspece());
+        values.put("idCahierCulture", cahierCulture.getIdCahierCulture());
+        Global.bddsqlLite.update("parcelle",values,"idParcelle = ?",new String[]{id});
+    }
 
     public void createSQLite(){
         ContentValues values = new ContentValues();
@@ -44,12 +54,29 @@ public class Parcelle {
         values.put("idCahierCulture", cahierCulture.getIdCahierCulture());
         Global.bddsqlLite.insert("parcelle", null, values);
     }
+    public void retrieve(int idParcelle){
+        Cursor c = Global.bddsqlLite.rawQuery("select surface, rendementPrevu, rendementRealise, codeEspece, idCahierCulture from parcelle WHERE idParcelle = " + idParcelle + ";" , null);
+        c.moveToFirst();
+        this.idParcelle = idParcelle;
+        this.surface = c.getDouble(0);
+        this.rendementPrevu = c.getDouble(1);
+        this.rendementRealise = c.getDouble(2);
+        String codeEspece = c.getString(3);
+        Espece espece = new Espece();
+        espece.retrieve(codeEspece);
+        this.espece = espece;
+        String idCahierculture = c.getString(4);
+        CahierCulture cahierCulture = new CahierCulture();
+        cahierCulture.retrieve(Integer.parseInt(idCahierculture));
+        this.cahierCulture = cahierCulture;
+        c.close();
+    }
 
-    public String getIdParcelle() {
+    public Integer getIdParcelle() {
         return idParcelle;
     }
 
-    public void setIdParcelle(String idParcelle) {
+    public void setIdParcelle(Integer idParcelle) {
         this.idParcelle = idParcelle;
     }
 

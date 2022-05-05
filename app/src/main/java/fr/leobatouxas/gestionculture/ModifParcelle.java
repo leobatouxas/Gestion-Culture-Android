@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+
+import fr.leobatouxas.gestionculture.modele.CahierCulture;
+import fr.leobatouxas.gestionculture.modele.Parcelle;
 
 public class ModifParcelle extends AppCompatActivity {
 
@@ -35,20 +41,19 @@ public class ModifParcelle extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, Especes);
         spinnerEspeceModif.setAdapter(DataAdapter);
         d.close();
-        Cursor c = Global.bddsqlLite.rawQuery("select surface, rendementPrevu, rendementRealise, codeEspece from parcelle WHERE idParcelle = " + idParcelle + ";" , null);
-        c.moveToFirst();
-        String surface = c.getString(0);
-        String rendementPrevu = c.getString(1);
-        String rendementRealise = c.getString(2);
-        String codeEspece = c.getString(3);
-        c.close();
+
+
+        Parcelle parcelle = new Parcelle();
+        parcelle.retrieve(Integer.parseInt(idParcelle));
+        String codeEspece = parcelle.getEspece().getCodeEspece();
+
         EditText editTextSurface = findViewById(R.id.editTextSurfaceModif);
         EditText editTextRendementPrevu = findViewById(R.id.editTextRendementPrevuModif);
         EditText editTextRendementRealise = findViewById(R.id.editTextRendementRealiseModif);
 
-        editTextSurface.setText(surface);
-        editTextRendementPrevu.setText(rendementPrevu);
-        editTextRendementRealise.setText(rendementRealise);
+        editTextSurface.setText(parcelle.getSurface().toString());
+        editTextRendementPrevu.setText(parcelle.getRendementPrevu().toString());
+        editTextRendementRealise.setText(parcelle.getRendementRealise().toString());
 
         if(codeEspece.equals("BLE")){
             spinnerEspeceModif.setSelection(0);
@@ -58,6 +63,14 @@ public class ModifParcelle extends AppCompatActivity {
         else if(codeEspece.equals("BETTE")){
             spinnerEspeceModif.setSelection(2);
         }
+
+        Button btnModifier =  findViewById(R.id.btn_modifParcelle);
+
+        btnModifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
     }
 }

@@ -42,6 +42,14 @@ public class CahierCulture {
         values.put("annee", this.annee);
         Global.bddsqlLite.insert("cahierCulture", null, values);
     }
+    public void retrieve(Integer idCahierCulture){
+        Cursor c = Global.bddsqlLite.rawQuery("SELECT idCahierCulture, codeExploitation, annee from cahierCulture WHERE idCahierCulture = " + idCahierCulture + ";" , null);
+        c.moveToFirst();
+        this.idCahierCulture = idCahierCulture;
+        this.exploitation = new Exploitation(c.getString(1));
+        this.annee = c.getString(2);
+        c.close();
+    }
     public void findBy(String CodeExploitation, String annee){
         Cursor c = Global.bddsqlLite.rawQuery("SELECT idCahierCulture,annee,codeExploitation FROM cahierCulture where codeExploitation = '" + CodeExploitation + "' AND annee = '" + annee + "';", null);
         while (c.moveToNext())
