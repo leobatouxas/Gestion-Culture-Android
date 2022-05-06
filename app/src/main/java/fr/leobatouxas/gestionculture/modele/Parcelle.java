@@ -35,14 +35,14 @@ public class Parcelle {
         this.cahierCulture = cahierCulture;
         this.espece = espece;
     }
-    public void update(String id){
+    public void update(){
         ContentValues values = new ContentValues();
         values.put("surface", surface);
         values.put("rendementPrevu", rendementPrevu);
         values.put("rendementRealise", rendementRealise);
         values.put("codeEspece", this.espece.getCodeEspece());
         values.put("idCahierCulture", cahierCulture.getIdCahierCulture());
-        Global.bddsqlLite.update("parcelle",values,"idParcelle = ?",new String[]{id});
+        Global.bddsqlLite.update("parcelle",values,"idParcelle = ?",new String[]{this.idParcelle.toString()});
     }
 
     public void createSQLite(){

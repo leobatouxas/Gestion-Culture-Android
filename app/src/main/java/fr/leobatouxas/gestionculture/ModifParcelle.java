@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 
 import fr.leobatouxas.gestionculture.modele.CahierCulture;
+import fr.leobatouxas.gestionculture.modele.Espece;
 import fr.leobatouxas.gestionculture.modele.Parcelle;
 
 public class ModifParcelle extends AppCompatActivity {
@@ -69,6 +70,20 @@ public class ModifParcelle extends AppCompatActivity {
         btnModifier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Espece espece = new Espece();
+                espece.findByLibelle(spinnerEspeceModif.getItemAtPosition(spinnerEspeceModif.getSelectedItemPosition()).toString());
+                parcelle.setEspece(espece);
+                String surface = editTextSurface.getText().toString();
+                parcelle.setSurface(Double.parseDouble(surface));
+
+                String rendementPrevu = editTextRendementPrevu.getText().toString();
+                parcelle.setRendementPrevu(Double.parseDouble(rendementPrevu));
+
+                String rendementRealise = editTextRendementRealise.getText().toString();
+                parcelle.setRendementRealise(Double.parseDouble(rendementRealise));
+
+                parcelle.update();
+
             }
         });
 
