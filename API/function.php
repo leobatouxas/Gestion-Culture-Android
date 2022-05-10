@@ -1,9 +1,9 @@
 <?php
 function connexionPDO(){
-    $login = "root";
+    $login = "";
     $mdp = "";
-    $bd = "gestionculture";
-    $serveur = "localhost";
+    $bd = "";
+    $serveur = "";
     try {
         $conn = new PDO("mysql:host=$serveur;dbname=$bd", $login, $mdp);
         return $conn;

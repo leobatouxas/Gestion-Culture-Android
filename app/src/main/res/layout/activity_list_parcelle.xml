@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.consulter.ConsulterFragment">
+    tools:context=".ListParcelle">
 
     <LinearLayout
         android:layout_width="364dp"
@@ -20,30 +20,22 @@
         app:layout_constraintVertical_bias="0.501">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/title_consulter_parcelle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="Consulter"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/title_consulter_cahierculture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/s_lectionner_cahier_culture" />
+            android:text="@string/s_lectionner_parcelle" />
 
         <Spinner
-            android:id="@+id/spinner_consulter_cahierculture"
+            android:id="@+id/spinner_consulter_parcelle"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
-            android:id="@+id/btn_consulter_cahierculture"
+            android:id="@+id/btn_consulter_parcelle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/consulter" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

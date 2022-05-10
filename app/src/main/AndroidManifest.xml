@@ -13,6 +13,12 @@
         android:theme="@style/Theme.GestionCulture"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ModifParcelle"
+            android:exported="false" />
+        <activity
+            android:name=".ListParcelle"
+            android:exported="false" />
+        <activity
             android:name=".ui.ajouter.AjoutParcelle"
             android:exported="false" />
 
