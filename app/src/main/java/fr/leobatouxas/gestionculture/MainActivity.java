@@ -35,14 +35,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //Création base de données SQL Lite
         int VERSION_BDD = 1;
         BaseDeDonneesSQLite baseDeDonneesSQLite = new BaseDeDonneesSQLite(getBaseContext(), "gestionculture.db", null,
                 VERSION_BDD);
         Global.bddsqlLite= baseDeDonneesSQLite.getWritableDatabase();
-
-        //Création instance base de données distante
-        //Global.accesDistant = new AccesDistant();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -56,12 +54,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-
-
-
-
-
     }
 
 }
