@@ -16,7 +16,8 @@ import fr.leobatouxas.gestionculture.outils.AsyncResponse;
 
 public class AccesDistant implements AsyncResponse {
 
-    private static final String SERVERADDR = "http://0.0.0.0/api/insert.php";
+    // Lien API
+    private static final String SERVERADDR = "http://0.0.0.0/API/insert.php";
 
     public AccesDistant() {
         super();
@@ -93,7 +94,7 @@ public class AccesDistant implements AsyncResponse {
                     e.printStackTrace();
             }
             list.add(JSONCahierCulture);
-
+            //Log.d("test",new JSONArray(list).toString());
 
         }
 
